@@ -451,7 +451,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGFloat screenWidth = screenBound.size.width;
     CGFloat screenHeight = screenBound.size.height;
     
-    float scaleFactor = imageFromView.size.width / screenWidth;
+    float scaleFactor =  (imageFromView ? imageFromView.size.width : screenWidth) / screenWidth;
     
     UIView *fadeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     fadeView.backgroundColor = [UIColor blackColor];
