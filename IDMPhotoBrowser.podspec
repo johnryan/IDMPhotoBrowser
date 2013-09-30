@@ -18,16 +18,35 @@ Pod::Spec.new do |s|
 
   s.framework = 'MessageUI', 'QuartzCore'
   
-  s.dependency 'AFNetworking', '~> 1.3.1'
   s.dependency 'DACircularProgress', '~> 2.1.0'
   s.dependency 'SVProgressHUD', '~> 0.9'
   
   s.requires_arc = true
   
-  s.prefix_header_contents = <<-EOS
- 	#import <SystemConfiguration/SystemConfiguration.h>
-	 #import <MobileCoreServices/MobileCoreServices.h>
- 
-  EOS
+   s.subspec 'Network' do |ns|
+     ns.source_files   = 'Code/Network.h', 'Code/Network'
+     ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
+     ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
+     ns.dependency       'SOCKit'
+     ns.dependency       'AFNetworking', '~> 1.3.1'
+     ns.dependency       'RestKit/ObjectMapping'
+     ns.dependency       'RestKit/Support'
+    
+     ns.prefix_header_contents = <<-EOS
+ #import <Availability.h>
+
+ #define _AFNETWORKING_PIN_SSL_CERTIFICATES_
+
+ #if __IPHONE_OS_VERSION_MIN_REQUIRED
+   #import <SystemConfiguration/SystemConfiguration.h>
+   #import <MobileCoreServices/MobileCoreServices.h>
+   #import <Security/Security.h>
+ #else
+   #import <SystemConfiguration/SystemConfiguration.h>
+   #import <CoreServices/CoreServices.h>
+   #import <Security/Security.h>
+ #endif
+ EOS
+   end
   
 end
