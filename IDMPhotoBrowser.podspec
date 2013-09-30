@@ -16,8 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/*.{h,m}'
   s.resources = 'Classes/IDMPhotoBrowser.bundle'
 
-  s.framework = 'MessageUI', 'QuartzCore'
-  s.frameworks = 'MobileCoreServices', 'SystemConfiguration'
+  s.framework = 'MessageUI', 'QuartzCore', 'MobileCoreServices', 'SystemConfiguration'
 
   s.dependency 'AFNetworking', '~> 1.3.1'
   s.dependency 'DACircularProgress', '~> 2.1.0'
