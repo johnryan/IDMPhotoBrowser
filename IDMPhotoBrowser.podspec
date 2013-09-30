@@ -16,8 +16,9 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/*.{h,m}'
   s.resources = 'Classes/IDMPhotoBrowser.bundle'
 
-  s.framework = 'MessageUI', 'QuartzCore', 'MobileCoreServices', 'SystemConfiguration'
-
+  s.framework = 'MessageUI', 'QuartzCore'
+  
+  s.prefix_header_contents = "#import <SystemConfiguration/SystemConfiguration.h>\n#import <MobileCoreServices/MobileCoreServices.h>"
   s.dependency 'AFNetworking', '~> 1.3.1'
   s.dependency 'DACircularProgress', '~> 2.1.0'
   s.dependency 'SVProgressHUD', '~> 0.9'
