@@ -18,10 +18,16 @@ Pod::Spec.new do |s|
 
   s.framework = 'MessageUI', 'QuartzCore'
   
-  s.prefix_header_contents = "#import <SystemConfiguration/SystemConfiguration.h>\n#import <MobileCoreServices/MobileCoreServices.h>"
   s.dependency 'AFNetworking', '~> 1.3.1'
   s.dependency 'DACircularProgress', '~> 2.1.0'
   s.dependency 'SVProgressHUD', '~> 0.9'
   
   s.requires_arc = true
+  
+  s.prefix_header_contents = <<-EOS
+ 	#import <SystemConfiguration/SystemConfiguration.h>
+	 #import <MobileCoreServices/MobileCoreServices.h>
+ 
+  EOS
+  
 end
