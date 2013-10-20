@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
      ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
      ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
      ns.dependency       'SOCKit'
-	 ns.dependency       'AFNetworking', '~> 2.0.1'
+	 ns.dependency       'AFNetworking', '~> 1.3.0'
      
     
      ns.prefix_header_contents = <<-EOS
