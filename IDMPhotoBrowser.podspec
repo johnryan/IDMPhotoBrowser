@@ -22,9 +22,14 @@ Pod::Spec.new do |s|
   s.dependency 'SVProgressHUD', '~> 0.9'
   
   s.requires_arc = true
-  s.dependency       'AFNetworking', '~> 2.0.1'
-  s.dependency       'DACircularProgress', '~> 2.1.0'
-  s.dependency       'SVProgressHUD', '~> 0.9'
+  
+   s.subspec 'Network' do |ns|
+     ns.source_files   = 'Code/Network.h', 'Code/Network'
+     ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
+     ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
+     ns.dependency       'SOCKit'
+	 ns.dependency       'AFNetworking', '~> 2.0.1'
+     
     
      ns.prefix_header_contents = <<-EOS
  #import <Availability.h>
